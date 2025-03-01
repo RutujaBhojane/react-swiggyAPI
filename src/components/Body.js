@@ -1,17 +1,17 @@
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   //useState() is used to create state variable and it maintains the state of the component
-  const [listOfRestaurants, setlistOfRestaurants] = useState(resList);
+  const [listOfRestaurants, setlistOfRestaurants] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-//The async keyword means this function will work with Promises, allowing us to use await inside it.
-//await pauses execution until the fetch request and JSON parsing are complete.
+  //The async keyword means this function will work with Promises, allowing us to use await inside it.
+  //await pauses execution until the fetch request and JSON parsing are complete.
 
   const fetchData = async () => {
     const data = await fetch(
@@ -21,10 +21,22 @@ const Body = () => {
     const json = await data.json();
 
     console.log(json);
-    //setlistOfRestaurants(json)
+    setlistOfRestaurants(
+      //optional chaining
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
-  return (
+  /* conditional rendering
+  if (listOfRestaurants.length === 0) {
+    return <Shimmer />;
+  }
+*/
+
+  //another way of conditional rendering
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button

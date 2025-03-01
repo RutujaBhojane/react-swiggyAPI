@@ -58,3 +58,11 @@ default export/import & named export/import
 # async - await
 ---The async keyword in JavaScript is used to define an asynchronous function. This means the function always returns a Promise, even if you don’t explicitly return one.
 ---The await keyword can only be used inside async functions and is used to pause execution until a Promise is resolved.
+
+# optional chaining 
+---Optional chaining (?.) is a feature in JavaScript that safely accesses nested object properties without throwing an error if a property is null or undefined.
+---If address is undefined or null, it stops and returns undefined instead of throwing an error.
+
+# Git commands
+---git pull origin main
+---
