@@ -1,10 +1,28 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
   //useState() is used to create state variable and it maintains the state of the component
   const [listOfRestaurants, setlistOfRestaurants] = useState(resList);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+//The async keyword means this function will work with Promises, allowing us to use await inside it.
+//await pauses execution until the fetch request and JSON parsing are complete.
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.437973605399232&lng=73.86362334666698"
+    );
+
+    const json = await data.json();
+
+    console.log(json);
+    //setlistOfRestaurants(json)
+  };
 
   return (
     <div className="body">

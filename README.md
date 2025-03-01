@@ -52,4 +52,9 @@ default export/import & named export/import
 # React Hooks
 (Normal JS Utility functions)
 ---useState() - superpowerful State variables in react
----useEffect() - 
+---useEffect() - It is a hook provided by react which is nothing but a normal js function. It takes 2 arguments one is a callback function and second is a dependency array. useEffect(()=>{}, []); will be called after the main component is rendered. Then callback function of useEffect will be executed and react will rerender the page again after fetching data from the API call made. 
+
+
+# async - await
+---The async keyword in JavaScript is used to define an asynchronous function. This means the function always returns a Promise, even if you don’t explicitly return one.
+---The await keyword can only be used inside async functions and is used to pause execution until a Promise is resolved.
