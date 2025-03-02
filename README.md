@@ -64,5 +64,7 @@ default export/import & named export/import
 ---If address is undefined or null, it stops and returns undefined instead of throwing an error.
 
 # Git commands
----git pull origin main
----
+---  git pull origin main
+---  git add .
+---  git commit -m "message"
+---  git push origin main

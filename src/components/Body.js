@@ -6,6 +6,9 @@ const Body = () => {
   //useState() is used to create state variable and it maintains the state of the component
   const [listOfRestaurants, setlistOfRestaurants] = useState([]);
 
+  //useEffect is used after your component is rendered. 
+  // Then callback function of useEffect will be executed and react will rerender the page again after fetching data from API.
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,6 +28,7 @@ const Body = () => {
       //optional chaining
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    //console.log("data fetch from api new state variable rerender");
   };
 
   /* conditional rendering
@@ -47,6 +51,7 @@ const Body = () => {
               (res) => res.info.avgRating > 4
             );
             setlistOfRestaurants(filteredList);
+            //console.log("filter button component rerender");
           }}
         >
           Top Rated Restaurants
@@ -62,3 +67,12 @@ const Body = () => {
 };
 
 export default Body;
+
+/*
+1. Body component renders
+2. Then callback function of useEffect will be executed
+3. It will fetch data from API
+4. After data is received, the state variable is updated.
+5. As soon as the state variable is changed the component will be rerendered.
+6. Uncomment console statements and understand the concept.
+*/
