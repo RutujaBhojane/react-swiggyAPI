@@ -64,6 +64,15 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <button
+          className="view-all-res"
+          onClick={() => {
+            setfilteredRestaurantList(listOfRestaurants);
+            setsearchText("");
+          }}
+        >
+          View All Restaurants
+        </button>
       </div>
       <div className="res-container">
         {filteredRestaurantList.map((restaurant) => (

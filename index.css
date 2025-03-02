@@ -76,3 +76,8 @@
 .filter{
   display: flex;
 }
+
+.view-all-res{
+  margin: 10px;
+  cursor: pointer;
+}
