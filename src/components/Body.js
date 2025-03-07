@@ -1,13 +1,14 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
-  const [listOfRestaurants, setlistOfRestaurants] = useState([]);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
-  const [filteredRestaurantList, setfilteredRestaurantList] = useState([]);
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
 
-  const [searchText, setsearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -21,10 +22,10 @@ const Body = () => {
     const json = await data.json();
 
     console.log(json);
-    setlistOfRestaurants(
+    setListOfRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setfilteredRestaurantList(
+    setFilteredRestaurantList(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
@@ -39,7 +40,7 @@ const Body = () => {
             className="search-box"
             value={searchText}
             onChange={(e) => {
-              setsearchText(e.target.value);
+              setSearchText(e.target.value);
             }}
           ></input>
           <button
@@ -47,7 +48,7 @@ const Body = () => {
               const filteredRestaurant = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setfilteredRestaurantList(filteredRestaurant);
+              setFilteredRestaurantList(filteredRestaurant);
             }}
           >
             Search
@@ -59,7 +60,7 @@ const Body = () => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4.3
             );
-            setfilteredRestaurantList(filteredList);
+            setFilteredRestaurantList(filteredList);
           }}
         >
           Top Rated Restaurants
@@ -67,8 +68,8 @@ const Body = () => {
         <button
           className="view-all-res"
           onClick={() => {
-            setfilteredRestaurantList(listOfRestaurants);
-            setsearchText("");
+            setFilteredRestaurantList(listOfRestaurants);
+            setSearchText("");
           }}
         >
           View All Restaurants
@@ -76,7 +77,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurantList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

@@ -68,3 +68,17 @@ default export/import & named export/import
 ---  git add .
 ---  git commit -m "message"
 ---  git push origin main
+
+# 2 types of routing
+--- client side routing - 
+Handled by the browser using JavaScript.
+Pages don’t fully reload; only parts of the content change.
+Faster after the initial load since no new page request is made.
+Used in Single Page Applications (SPAs) like React.
+Example: Clicking a link updates the URL but doesn’t reload the page.
+--- server side routing
+Every time a user clicks a link, a request is sent to the server.
+The server processes the request and sends a new HTML page.
+Slower because the whole page reloads, but better for SEO and initial load time.
+Used in traditional websites (PHP, Django, Ruby on Rails, etc.).
+Example: Clicking a link loads a completely new page from the server.
