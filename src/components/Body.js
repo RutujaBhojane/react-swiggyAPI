@@ -41,6 +41,7 @@ const Body = () => {
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
+              //console.log("search text value updated");
             }}
           ></input>
           <button
@@ -79,7 +80,7 @@ const Body = () => {
         {filteredRestaurantList.map((restaurant) => (
           <Link
             key={restaurant.info.id}
-            to={"/restaurants/" + restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}  //whenever we will click on any restaurant card it will direct us to that particular restaurants details. 
           >
             <RestaurantCard resData={restaurant} />
           </Link>
