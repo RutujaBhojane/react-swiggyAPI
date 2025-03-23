@@ -14,7 +14,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 //dynamic bundling
 //lazy loading
 //on demand loading
-//dynamic import
+//dynamic import 
 
 const Grocery = lazy(() => import("./components/Grocery"));
 

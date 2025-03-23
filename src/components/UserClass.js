@@ -14,7 +14,7 @@ class UserClass extends React.Component {
       },
     };
 
-    console.log(this.props.name + " constructor");
+    console.log(this.props.name1 + " constructor");
   }
 
   async componentDidMount() {
@@ -42,10 +42,10 @@ class UserClass extends React.Component {
     const { count, count2 } = this.state;
     const { name, id, avatar_url } = this.state.userInfo;
 
-    console.log(this.props.name + " render");
+    console.log(this.props.name1 + " render");
 
     return (
-      <div className="user-card">
+      <div className="user-card m-4 p-4 bg-red-100 rounded-lg">
         <img src={avatar_url}></img>
         <h2>Count : {count}</h2>
         <h2>Count2 : {count2}</h2>
