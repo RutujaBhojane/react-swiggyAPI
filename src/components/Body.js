@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -16,7 +16,9 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState("");
 
-  //console.log(listOfRestaurants);
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+  console.log(listOfRestaurants);
 
   const onlineStatus = useOnlineStatus();
 
@@ -63,14 +65,14 @@ const Body = () => {
         </div>
         <div className="m-4 p-4 flex items-center">
           <button
-          className="px-4 py-2 bg-gray-100 rounded-lg"
-          onClick={() => {
-            viewAll();
-            setSearchText("");
-          }}
-        >
-          View All Restaurants
-        </button>
+            className="px-4 py-2 bg-gray-100 rounded-lg"
+            onClick={() => {
+              viewAll();
+              setSearchText("");
+            }}
+          >
+            View All Restaurants
+          </button>
         </div>
       </div>
       <div className="flex flex-wrap">
@@ -79,7 +81,15 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id} //whenever we will click on any restaurant card it will direct us to that particular restaurants details.
           >
-            <RestaurantCard resData={restaurant} />
+            {
+              /* if the restaurant is promoted (rating>4) then add a promoted label to it */
+
+              restaurant.info.avgRating > 4.2 ? (
+                <RestaurantCardPromoted resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )
+            }
           </Link>
         ))}
       </div>
