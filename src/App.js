@@ -7,6 +7,8 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
+import UserContext from "./utils/UserContext";
 //import Grocery from "./components/Grocery";
 
 //chunking
@@ -14,15 +16,26 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 //dynamic bundling
 //lazy loading
 //on demand loading
-//dynamic import 
+//dynamic import
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    //make an API call and send username and password
+    const data = {
+      name: "Rutuja Bhojane",
+    };
+    setUserName(data.name);
+  }, []);
   return (
     <div className="app">
-      <Header />
-      <Outlet />
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <Header />
+        <Outlet />
+      </UserContext.Provider>
     </div>
   );
 };

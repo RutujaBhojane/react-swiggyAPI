@@ -14,11 +14,11 @@ class UserClass extends React.Component {
       },
     };
 
-    console.log(this.props.name1 + " constructor");
+    //console.log(this.props.name1 + " constructor");
   }
 
   async componentDidMount() {
-    console.log(this.props.name + " component Did Mount");
+    //console.log(this.props.name1 + " component Did Mount");
     const data = await fetch("https://api.github.com/users/RutujaBhojane");
     const json = await data.json();
 
@@ -26,15 +26,15 @@ class UserClass extends React.Component {
       userInfo: json,
     });
 
-    console.log(json);
+    //console.log(json);
   }
 
   componentDidUpdate() {
-    console.log("component did update");
+    //console.log("component did update");
   }
 
   componentWillUnmount() {
-    console.log("component Will Unmount");
+    //console.log("component Will Unmount");
   }
 
   render() {
@@ -42,7 +42,7 @@ class UserClass extends React.Component {
     const { count, count2 } = this.state;
     const { name, id, avatar_url } = this.state.userInfo;
 
-    console.log(this.props.name1 + " render");
+    //console.log(this.props.name1 + " render");
 
     return (
       <div className="user-card m-4 p-4 bg-red-100 rounded-lg">
