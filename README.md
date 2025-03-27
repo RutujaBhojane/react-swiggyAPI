@@ -89,3 +89,12 @@ server side routing
 - Slower because the whole page reloads, but better for SEO and initial load time.
 - Used in traditional websites (PHP, Django, Ruby on Rails, etc.).
 - Example: Clicking a link loads a completely new page from the server.
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (CartSlice)
+- dispatch (action)
+- Selector

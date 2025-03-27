@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -18,8 +19,12 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
   //The useContext Hook is used in React to access values from a context without needing to pass props manually.
-  const {loggedInUser} = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
   console.log(loggedInUser);
+
+  // subscribing to the store using a Selector. Selector is a Hook.
+
+  const cartItems = useSelector((store) => store.cart.items); // using Redux Toolkit's useSelector hook to access the items array inside the cart slice of the Redux store.
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg m-2 sm:bg-yellow-100 lg:bg-blue-100">
@@ -41,7 +46,9 @@ const Header = () => {
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="px-4">Cart</li>
+          <li className="px-4 font-bold text-lg">
+            Cart 🛒 ({cartItems.length} items)
+          </li>
           <button
             className="login"
             onClick={() => {

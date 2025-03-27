@@ -44,7 +44,9 @@ const RestaurantMenu = () => {
           key={category?.card?.card?.title}
           data={category?.card?.card}
           showItems={index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)}
+          setShowIndex={() => {
+            setShowIndex((prevIndex) => (prevIndex === index ? null : index));
+          }}
         />
       ))}
     </div>
@@ -52,3 +54,5 @@ const RestaurantMenu = () => {
 };
 
 export default RestaurantMenu;
+
+//RestaurantMenu is an uncontrolled component because has its own state and controlls itself.

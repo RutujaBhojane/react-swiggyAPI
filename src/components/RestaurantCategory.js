@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ItemList from "./ItemList";
 
 const RestaurantCategory = (props) => {
@@ -27,3 +26,5 @@ const RestaurantCategory = (props) => {
 };
 
 export default RestaurantCategory;
+
+//RestaurantCategory is a controlled component because it does has its own state and depends on its parent.
