@@ -1,8 +1,18 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = (props) => {
   const { items } = props;
   //console.log(items);
+
+  const dispatch = useDispatch(); //useDispatch Hook gives us a function dispatch
+
+  const handleAddItem = (item) => {
+    // dispatch an action
+    dispatch(addItem(item));
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -24,7 +34,10 @@ const ItemList = (props) => {
           </div>
           <div className="w-3/12 p-4">
             <div className="absolute">
-              <button className="p-2 mx-12 rounded-lg bg-black shadow-lg text-white">
+              <button
+                className="p-2 mx-12 rounded-lg bg-black shadow-lg text-white"
+                onClick={() => handleAddItem(item)} // handleAddItem is an arrow function, and when used inside onClick={() => handleAddItem(item)}, it also acts as a callback function.
+              >
                 Add +
               </button>
             </div>

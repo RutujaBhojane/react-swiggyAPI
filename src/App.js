@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 //import Grocery from "./components/Grocery";
 
 //chunking
@@ -72,6 +73,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId", //dynamic route using : --- resId is dynamic, every restaurant has different resId that uniquely identifies the restaurant. So our routes will be unique whenever we have a new restaurant.
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

@@ -27,4 +27,4 @@ const RestaurantCategory = (props) => {
 
 export default RestaurantCategory;
 
-//RestaurantCategory is a controlled component because it does has its own state and depends on its parent.
+//RestaurantCategory is a controlled component because it does not have its own state and depends on its parent.
